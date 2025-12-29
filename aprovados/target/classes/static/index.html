@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head><meta charset="UTF-8"><title>Aprovados</title></head>
+<body>
+<h2>Cadastro de Aprovados</h2>
+<form id="form">
+<input name="nome" placeholder="Nome" required><br><br>
+<input name="email" type="email" placeholder="Email" required><br><br>
+<input name="telefone" placeholder="Telefone" required><br><br>
+<textarea name="concursos" placeholder="Concursos"></textarea><br><br>
+<input name="imagem" type="file" required><br><br>
+<button>Enviar</button>
+</form>
+<script>
+document.getElementById("form").onsubmit = async e => {
+ e.preventDefault();
+ const r = await fetch("/aprovados", { method:"POST", body:new FormData(e.target) });
+ alert(r.ok ? "Sucesso!" : "Erro");
+};
+</script>
+</body>
+</html>
